@@ -30,11 +30,11 @@ void loop() {
       Serial.println("both on");
       Serial.println(lightState1 + " and " + lightState2);
       Serial.println("");
-      if (!lightState1){
+      if(lightState1 < 10 && lightState2 > 10){
         currState = NORTH_OFF;
         prevState = BOTH_ON;
       }
-      else if (!lightState2){
+      else if (lightState1 > 10 && lightState2 < 10){
         currState = SOUTH_OFF;
         prevState = BOTH_ON;
       }
@@ -44,12 +44,12 @@ void loop() {
       Serial.println("both off");
       Serial.println(lightState1 + " and " + lightState2);
       Serial.println("");
-      if (!lightState1 && lightState2){
+      if (lightState1 < 10 && lightState2 > 10){
         // code to move
         currState = NORTH_OFF;
         prevState = BOTH_OFF;
       }
-      if (lightState1 && !lightState2){
+      if (lightState1 > 10 && lightState2 < 10){
         // code to move
         currState = SOUTH_OFF;
         prevState = BOTH_OFF;
@@ -60,14 +60,14 @@ void loop() {
       Serial.println("north off");
       Serial.println(lightState1 + " and " + lightState2);
       Serial.println("");
-       if (!lightState1 && lightState2){
+       if (lightState1  < 10&& lightState2 > 10){
         // code to move
        }
-       else if (lightState1 && lightState2){
+       else if (lightState1 > 10 && lightState2 > 10){
         currState = BOTH_ON;
         prevState = NORTH_OFF;
        }
-       else if (!lightState1 && !lightState2){
+       else if (lightState1 < 10 && lightState2 < 10){
         currState = BOTH_OFF;
         prevState = NORTH_OFF;
        }
@@ -77,14 +77,14 @@ void loop() {
       Serial.println("south off");
       Serial.println(lightState1 + " and " + lightState2);
       Serial.println("");
-      if (lightState1 && !lightState2){
+      if (lightState1 > 10 && lightState2 < 10){
           // code to move
       }
-      else if (lightState1 && lightState2){
+      else if (lightState1 > 10 && lightState2 > 10){
         currState = BOTH_ON;
         prevState = SOUTH_OFF;
       }
-      else if (!lightState1 && !lightState2){
+      else if (lightState1 < 10 && lightState2 < 10){
         currState = BOTH_OFF;
         prevState = SOUTH_OFF;
       }
