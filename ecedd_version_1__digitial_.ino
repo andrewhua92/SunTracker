@@ -1,11 +1,17 @@
+#include <Servo.h>
+
 int leftLight = A0; // pin for the first photodiode
 int rightLight = A1; // pin for the second photodiode
 // int light3 = 3;
+
+
 
 int leftState = 0;  // current state of the pin for the first photodiode
 int rightState = 0;
 // int prevState1 = 0;
 // int prevState2 = 0;
+
+Servo myServo;
 
 enum LocationStates{BOTH_ON, BOTH_OFF, LEFT_OFF, RIGHT_OFF};
 LocationStates currState = BOTH_ON;
@@ -13,11 +19,13 @@ LocationStates prevState = currState;
 
 void setup() {
   Serial.begin(9600);
+  myServo.attach(9);
   pinMode(leftLight, INPUT);
   pinMode(rightLight, INPUT);
   // pinMode(light3, INPUT);
 }
 
+int pos = 90;
 
 
 void loop() {
@@ -46,13 +54,21 @@ void loop() {
       Serial.println(leftState);
       Serial.println(rightState);      
       Serial.println("");
-      if (leftState < 10 && rightState > 10){
+      if (leftState > 10 && rightState > 10){
+        currState = BOTH_ON;
+        prevState = BOTH_OFF;
+      }
+      else if (leftState < 10 && rightState > 10){
         // code to move
+        pos = pos + 1;
+        myServo.write(pos);
         currState = LEFT_OFF;
         prevState = BOTH_OFF;
       }
-      if (leftState > 10 && rightState < 10){
+      else if (leftState > 10 && rightState < 10){
         // code to move
+        pos = pos - 1;
+        myServo.write(pos);
         currState = RIGHT_OFF;
         prevState = BOTH_OFF;
       }
@@ -65,6 +81,8 @@ void loop() {
       Serial.println("");
        if (leftState  < 10&& rightState > 10){
         // code to move
+        pos = pos + 1;
+        myServo.write(pos);
        }
        else if (leftState > 10 && rightState > 10){
         currState = BOTH_ON;
@@ -83,6 +101,8 @@ void loop() {
       Serial.println("");
       if (leftState > 10 && rightState < 10){
           // code to move
+          pos = pos - 1;
+          myServo.write(pos);
       }
       else if (leftState > 10 && rightState > 10){
         currState = BOTH_ON;
