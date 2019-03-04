@@ -1,7 +1,7 @@
 #include <Servo.h>
 
-int leftLight = A0; // pin for the first photodiode
-int rightLight = A1; // pin for the second photodiode
+int leftLight = A1; // pin for the first photodiode
+int rightLight = A0; // pin for the second photodiode
 // int light3 = 3;
 
 
@@ -38,6 +38,7 @@ void loop() {
       Serial.println("both on");
       Serial.println(leftState);
       Serial.println(rightState);
+      Serial.println(pos);
       Serial.println("");
       if(leftState < 10 && rightState > 10){
         currState = LEFT_OFF;
@@ -52,7 +53,8 @@ void loop() {
     case BOTH_OFF: {
       Serial.println("both off");
       Serial.println(leftState);
-      Serial.println(rightState);      
+      Serial.println(rightState); 
+      Serial.println(pos);     
       Serial.println("");
       if (leftState > 10 && rightState > 10){
         currState = BOTH_ON;
@@ -60,14 +62,14 @@ void loop() {
       }
       else if (leftState < 10 && rightState > 10){
         // code to move
-        pos = pos + 1;
+        pos = pos + 2;
         myServo.write(pos);
         currState = LEFT_OFF;
         prevState = BOTH_OFF;
       }
       else if (leftState > 10 && rightState < 10){
         // code to move
-        pos = pos - 1;
+        pos = pos - 2;
         myServo.write(pos);
         currState = RIGHT_OFF;
         prevState = BOTH_OFF;
@@ -78,10 +80,11 @@ void loop() {
       Serial.println("left off");
       Serial.println(leftState);
       Serial.println(rightState);
+      Serial.println(pos);
       Serial.println("");
        if (leftState  < 10&& rightState > 10){
         // code to move
-        pos = pos + 1;
+        pos = pos + 2;
         myServo.write(pos);
        }
        else if (leftState > 10 && rightState > 10){
@@ -98,10 +101,11 @@ void loop() {
       Serial.println("right off");
       Serial.println(leftState);
       Serial.println(rightState);
+      Serial.println(pos);
       Serial.println("");
       if (leftState > 10 && rightState < 10){
           // code to move
-          pos = pos - 1;
+          pos = pos - 2;
           myServo.write(pos);
       }
       else if (leftState > 10 && rightState > 10){
