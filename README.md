@@ -5,6 +5,8 @@ In a team of four (Andrew Hua, Huanyou Wei, Darryl Wu and Jason Zhang), we worke
 track light. Using photodiodes, an Arduino UNO, various circuitry, and Tetrix kits, we built a free-standing, rotating arm that
 moves based on the amount of light which is being detected by the photodiodes.
 
+![Device](https://github.com/andrewhua92/ECEDD-19/blob/master/ECE_DD_Device_'19.jpg)
+
 The premise of the design was to absorb as much energy as possible by the sunlight, moving the arm (with the solar cell attached
 to its end) based on the amount of light the individual photodiodes were receiving. The rotation of the arm utilized a standard
 rotational servo which moves based on angular analog inputs.
