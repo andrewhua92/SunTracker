@@ -6,7 +6,7 @@ track light. Using photodiodes, an Arduino UNO, various circuitry, and Tetrix ki
 moves based on the amount of light which is being detected by the photodiodes.
 
 ![Device](https://github.com/andrewhua92/ECEDD-19/blob/master/ECE_DD_Device_'19.jpg)
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+(Sorry for orientation)
 
 The premise of the design was to absorb as much energy as possible by the sunlight, moving the arm (with the solar cell attached
 to its end) based on the amount of light the individual photodiodes were receiving. The rotation of the arm utilized a standard
